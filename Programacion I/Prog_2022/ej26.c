@@ -24,17 +24,25 @@ int pedirCantidadEmp(int cantidad);
 
 void cargarNomina(DATA_EMPLEADO nomina[],int iterador);
 
+void calcularSueldo(DATA_EMPLEADO nomina[], int iterador, float sueldo[]);
+
+void mostrarDatos(DATA_EMPLEADO nomina[], int iterador, float sueldo[]);
+
 int main(){
 
     int cantidad = 0;
 
     int iterador = pedirCantiadadEmp(cantidad);
 
+    float sueldo[iterador];
+
     DATA_EMPLEADO nomina[iterador];
 
-    printf("%d", iterador);
-
     cargarNomina(nomina,iterador);
+
+    calcularSueldo(nomina, iterador, sueldo);
+
+    mostrarDatos(nomina, iterador, sueldo);
 
     return 0;
 }
@@ -71,5 +79,27 @@ void cargarNomina(DATA_EMPLEADO nomina[],int iterador){
         fflush(stdin);
         scanf("%f", &nomina[iterador].valorHora);
     }
+    return;
+}
+
+void calcularSueldo(DATA_EMPLEADO nomina[], int iterador, float sueldo[]){
+
+    for (int i = 0; i < iterador; i++)
+    {
+        sueldo[iterador] = nomina[iterador].horasTrabajadas * nomina[iterador].valorHora;
+    }
+    
+    return;
+}
+
+
+void mostrarDatos(DATA_EMPLEADO nomina[], int iterador, float sueldo[]){
+
+    for (int i = 0; i < iterador; i++)
+    {
+        printf("Nombre del empleado: %c\t", nomina[iterador].nombre);
+        printf("Sueldo: %f\n", sueldo[iterador]);
+    }
+    
     return;
 }
