@@ -22,32 +22,30 @@ typedef struct
 
 int pedirCantidadEmp(int cantidad);
 
-void cargarNomina(DATA_EMPLEADO nomina[],int iterador);
+void cargarNomina(DATA_EMPLEADO nomina[],int cantidad);
 
-void calcularSueldo(DATA_EMPLEADO nomina[], int iterador, float sueldo[]);
+void calcularSueldo(DATA_EMPLEADO nomina[], int cantidad, float sueldo[]);
 
-void mostrarDatos(DATA_EMPLEADO nomina[], int iterador, float sueldo[]);
+void mostrarDatos(DATA_EMPLEADO nomina[], int cantidad, float sueldo[]);
 
 int main(){
 
-    int cantidad = 0;
+    int cantidad = pedirCantidadEmp(cantidad);
 
-    int iterador = pedirCantiadadEmp(cantidad);
+    float sueldo[cantidad];
 
-    float sueldo[iterador];
+    DATA_EMPLEADO nomina[cantidad];
 
-    DATA_EMPLEADO nomina[iterador];
+    cargarNomina(nomina,cantidad);
 
-    cargarNomina(nomina,iterador);
+    calcularSueldo(nomina, cantidad, sueldo);
 
-    calcularSueldo(nomina, iterador, sueldo);
-
-    mostrarDatos(nomina, iterador, sueldo);
+    mostrarDatos(nomina, cantidad, sueldo);
 
     return 0;
 }
 
-int pedirCantiadadEmp(int cantidad){
+int pedirCantidadEmp(int cantidad){
 
     printf("Ingrese la cantidad de empleados para realiar el calculo: \n");
     fflush(stdin);
@@ -63,42 +61,42 @@ int pedirCantiadadEmp(int cantidad){
     return cantidad;
 }
 //TODO Agregar validacion de los datos
-void cargarNomina(DATA_EMPLEADO nomina[],int iterador){
-    for (int i = 0; i < iterador; i++)
+void cargarNomina(DATA_EMPLEADO nomina[],int cantidad){
+    for (int i = 0; i < cantidad; i++)
     {
         //Pido Nombre
         printf("Ingrese el nombre del empleado: \n");
         fflush(stdin);
-        scanf("%c", &nomina[iterador].nombre);
+        scanf("%c", &nomina[i].nombre);
         //Pido Horas Trabajadas
         printf("Ingrese las horas trabajadas: \n"),
         fflush(stdin);
-        scanf("%f", &nomina[iterador].horasTrabajadas);
+        scanf("%f", &nomina[i].horasTrabajadas);
         //Pido Valor Hora
         printf("Ingrese el valor de la hora: \n"),
         fflush(stdin);
-        scanf("%f", &nomina[iterador].valorHora);
+        scanf("%f", &nomina[i].valorHora);
     }
     return;
 }
 
-void calcularSueldo(DATA_EMPLEADO nomina[], int iterador, float sueldo[]){
+void calcularSueldo(DATA_EMPLEADO nomina[], int cantidad, float sueldo[]){
 
-    for (int i = 0; i < iterador; i++)
+    for (int i = 0; i < cantidad; i++)
     {
-        sueldo[iterador] = nomina[iterador].horasTrabajadas * nomina[iterador].valorHora;
+        sueldo[i] = nomina[i].horasTrabajadas * nomina[i].valorHora;
     }
     
     return;
 }
 
 
-void mostrarDatos(DATA_EMPLEADO nomina[], int iterador, float sueldo[]){
+void mostrarDatos(DATA_EMPLEADO nomina[], int cantidad, float sueldo[]){
 
-    for (int i = 0; i < iterador; i++)
+    for (int i = 0; i < cantidad; i++)
     {
-        printf("Nombre del empleado: %c\t", nomina[iterador].nombre);
-        printf("Sueldo: %f\n", sueldo[iterador]);
+        printf("Nombre del empleado: %c\t", nomina[i].nombre);
+        printf("Sueldo: %f\n", sueldo[i]);
     }
     
     return;
