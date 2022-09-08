@@ -1,6 +1,6 @@
 /*
     Ingresar N Empleados: apellido y sueldo
-    Ordenar empleados según primer letra del apellido
+    Ordenar empleados segï¿½n primer letra del apellido
     Imprimir empleados en orden
 */
 
@@ -107,14 +107,3 @@ int main() {
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
