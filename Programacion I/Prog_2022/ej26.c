@@ -2,7 +2,7 @@
 
 /*
 Confeccionar un programa que calcule los sueldos de N empleados,solicitando el ingreso por teclado de nombre completo,
- el pago porhora y la cantidad de horas trabajadas de cada empleado.
+ el pago por hora y la cantidad de horas trabajadas de cada empleado.
 
 ▪ Ingresar por teclado la cantidad N de empleados.
 
@@ -16,7 +16,7 @@ typedef struct
     char nombre[20];
     float horasTrabajadas;
     float valorHora;
-}DATA_EMPLEADO;
+} DATA_EMPLEADO;
 
 //TODO Agregar funcion calcularSueldo
 
@@ -67,7 +67,7 @@ void cargarNomina(DATA_EMPLEADO nomina[],int cantidad){
         //Pido Nombre
         printf("Ingrese el nombre del empleado: \n");
         fflush(stdin);
-        scanf("%c", &nomina[i].nombre);
+        gets(nomina[i].nombre);
         //Pido Horas Trabajadas
         printf("Ingrese las horas trabajadas: \n"),
         fflush(stdin);
@@ -95,7 +95,7 @@ void mostrarDatos(DATA_EMPLEADO nomina[], int cantidad, float sueldo[]){
 
     for (int i = 0; i < cantidad; i++)
     {
-        printf("Nombre del empleado: %c\t", nomina[i].nombre);
+        printf("Nombre del empleado: %s\t", nomina[i].nombre);
         printf("Sueldo: %f\n", sueldo[i]);
     }
     

@@ -10,7 +10,7 @@ Cantidad maxima de socios 7, variables descripcion, nonbre, apellido, costo anua
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_CANT 7
+#define MAX_CANT 2
 #define MAX_STR 10
 
 
@@ -91,8 +91,8 @@ void validarSocio(TIPO_SOCIO socio[]){
 void mostrarDatos(TIPO_SOCIO socio[]){
     for (int i = 0; i < MAX_CANT; i++)
     {
-        printf("Nombre completo: %c %c\t", socio[i].nombre, socio[i].apellido);
-        printf("Descripcion breve: %c\t", socio[i].descripcion);
+        printf("\nNombre completo: %s %s\t", socio[i].nombre, socio[i].apellido);
+        printf("Descripcion breve: %s\t", socio[i].descripcion);
         printf("Valor anual de cuota: %lf", socio[i].valorCuota);
     }
     

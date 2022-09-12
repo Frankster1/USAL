@@ -12,7 +12,6 @@ int calcularMultiplos(int numeros[MAX_INT]);
 int main(){
 
     int numeros[MAX_INT];
-    int multiplos;
 
     pedirNumeros(numeros);
 
@@ -27,21 +26,29 @@ void pedirNumeros(int numeros[MAX_INT]){
         printf("Ingrese un numero: ");
         fflush(stdin);
         scanf("%d", &numeros[i]);
+
+        while (numeros[i] == 0)
+        {
+            printf("Error, ingrese un numero distinto a 0: ");
+            fflush(stdin);
+            scanf("%d", &numeros[i]);
+        }
+        
     }
 
     return;    
 }
 
 int calcularMultiplos(int numeros[MAX_INT]){
-        
-    int multiplos = 0;
 
+    int cantidad = 0;
+        
     for(int i = 0; i < MAX_INT; i++){        
-        if(multiplos % 5 == 0){
-            multiplos = multiplos + 1;
+        if(numeros[i] % 5 == 0){
+            cantidad = cantidad + 1;
         }        
     }
 
-    return multiplos;
+    return cantidad;
 }
 
