@@ -8,92 +8,99 @@ Cantidad maxima de socios 7, variables descripcion, nonbre, apellido, costo anua
 
 
 #include <stdio.h>
-#include <string.h>
 
-#define MAX_CANT 2
 #define MAX_STR 10
 
+typedef struct {
+  char nombre[MAX_STR];
+  char apellido[MAX_STR];
+  char descripcion[MAX_STR];
+  double valorCuota;
+} TIPO_SOCIO;
 
-typedef struct 
-{
-    char nombre[MAX_STR];
-    char apellido[MAX_STR];
-    char descripcion[MAX_STR];
-    double valorCuota;
-}TIPO_SOCIO;
+// Funciones
+void pedirDatos(TIPO_SOCIO socio[], int cantidad);
 
+void mostrarDatos(TIPO_SOCIO socio[], int cantidad);
 
-//Funciones
-void pedirDatos(TIPO_SOCIO socio[]);
+int main() {
 
-void validarSocio(TIPO_SOCIO socio[]);
+  int cantidad = 0;
 
-void mostrarDatos(TIPO_SOCIO socio[]);
+  TIPO_SOCIO socio[cantidad];
 
-TIPO_SOCIO busqueda(TIPO_SOCIO socio[]);
+  pedirDatos(socio, cantidad);
 
+  mostrarDatos(socio, cantidad);
 
-int main(){
-
-    TIPO_SOCIO socio[MAX_CANT];
-
-    pedirDatos(socio);
-
-    validarSocio(socio);
-
-    mostrarDatos(socio);
-
-    return 0;
+  return 0;
 }
 
-//Funcion pedir Datos
-void pedirDatos(TIPO_SOCIO socio[]){
+// Funcion pedir Datos
+void pedirDatos(TIPO_SOCIO socio[], int cantidad) {
 
-    for (int i = 0; i < MAX_CANT; i++)
-        {
-            //Pedir nombre
-            printf("Ingrese el nombre del socio: ");
-            fflush(stdin);
-            gets(socio[i].nombre);
+  int opcionCargarMas = 0;
+  int i = 0;
 
-            //Pedir apellido
-            printf("Ingrese el apellido del socio: ");
-            fflush(stdin);
-            gets(socio[i].apellido);
+  do
+  {
+    // Pedir nombre
+    printf("\nIngrese el nombre del socio: ");
+    fflush(stdin);
+    gets(socio[i].nombre);
 
-            //Pedir costo anual
-            printf("Ingrese el valor de la cuota anual del socio: ");
-            fflush(stdin);
-            scanf("%lf", &socio[i].valorCuota);
+    // Pedir apellido
+    printf("\nIngrese el apellido del socio: ");
+    fflush(stdin);
+    gets(socio[i].apellido);
 
-            //Pedir descripcion
-            printf("Ingrese una descripcion del socio: \n");
-            fflush(stdin);
-            gets(socio[i].descripcion);
-        }
-}
+    // Pedir costo anual
+    printf("\nIngrese el valor de la cuota anual del socio: ");
+    fflush(stdin);
+    scanf("%lf", &socio[i].valorCuota);
 
-//Valdiar costo
-void validarSocio(TIPO_SOCIO socio[]){
+    // Pedir descripcion
+    printf("\nIngrese una descripcion del socio: ");
+    fflush(stdin);
+    gets(socio[i].descripcion);
 
-    int i = 0;
-
-    while (socio[i].valorCuota < 0)
-    {
-        printf("Error, el valor de la cuota no puede ser negativo, intente nuevamente:\t");
-        fflush(stdin);
-        scanf("%lf", &socio[i].valorCuota);
+    // Valdiar costo
+    while (socio[i].valorCuota < 0) {
+      printf("\nError, el valor de la cuota no puede ser negativo, intente nuevamente: ");
+      fflush(stdin);
+      scanf("%lf", &socio[i].valorCuota);
     }
+
+    // Pregunto si quiere cargar mas datos
+    printf("\nIngrese 1 para cargar otro socio, de lo contrario presione 0: ");
+    fflush(stdin);
+    scanf("%d", &opcionCargarMas);
+
+    while (opcionCargarMas != 0 && opcionCargarMas != 1) {
+      printf("\nError, ingrese 1 para cargar otro socio, de lo contrario presione 0: ");
+      fflush(stdin);
+      scanf("%d", &opcionCargarMas);
+    }
+
     i++;
+    
+    cantidad = i;
+  
+  } while (opcionCargarMas == 1);
+   
+  return;
 }
 
-//Mostrar datos
-void mostrarDatos(TIPO_SOCIO socio[]){
-    for (int i = 0; i < MAX_CANT; i++)
-    {
-        printf("\nNombre completo: %s %s\t", socio[i].nombre, socio[i].apellido);
-        printf("Descripcion breve: %s\t", socio[i].descripcion);
-        printf("Valor anual de cuota: %lf", socio[i].valorCuota);
-    }
-    
+// Mostrar datos
+void mostrarDatos(TIPO_SOCIO socio[], int cantidad) {
+
+  printf("\nNombre completo: \t");
+  printf("Descripcion breve: \t");
+  printf("Valor anual de cuota: \n");
+
+  for (int i = 0; i < cantidad; i++) {
+    printf("%s %s\t", socio[i].nombre, socio[i].apellido);
+    printf("%s\t", socio[i].descripcion);
+    printf("%lf\n", socio[i].valorCuota);
+  }
 }
