@@ -12,11 +12,9 @@
 int main()
 
 {
-
   double estadia = 0;
   int valor_hora = 110;
   char patente[6];
-
 
   //Pido la patente del vehiculo
 
@@ -45,13 +43,9 @@ int main()
     printf("Ingrese la patente:\n");
     fflush(stdin);
     scanf("%s", &patente);
-
  
   printf("largo de patente: %s", strlen(patente));
-
-
   printf("El monto a cobrar para el vehiculo con patente %s es: %lf",patente, a_cobrar);
-
-
+  
   return 0;
 }
