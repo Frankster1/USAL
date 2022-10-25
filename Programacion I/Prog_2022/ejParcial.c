@@ -102,14 +102,12 @@ void calcularSerie(int* puntLimInf, int* puntLimSup, int* conjuntoSerie){
     int* aux = conjuntoSerie;
     conjuntoSerie++;
 
-
     do
     {
         *conjuntoSerie = *(conjuntoSerie - 1) * 2; 
-        //printf("\n%d", *conjuntoSerie);
         conjuntoSerie++; //Esto hace que cambie la ubicacion dentro del puntero
         acum++; //Esto incrementa el valor de cant de datos escritos en el puntero por si se ingresan menos datos de lo reservado
-    } while (*conjuntoSerie < *puntLimSup || acum < MAX_NUM);
+    } while ((((*conjuntoSerie)*2) < *puntLimSup) && (acum < MAX_NUM));
 
     printf("\nLa serie es: ");
 
@@ -117,14 +115,15 @@ void calcularSerie(int* puntLimInf, int* puntLimSup, int* conjuntoSerie){
     {
         printf("%d", aux[i]);
 
-        if (i <= (acum - 2))
+        if (i <= (acum - 2))//*Esto es solo para que ponga punto o coma
         {
             printf(", ");
         }
         if (i == (acum - 1))
         {
             printf(".");
-        }
+        }//*
     }
+
     return;
 }
