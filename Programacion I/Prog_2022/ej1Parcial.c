@@ -13,7 +13,7 @@ EXTRA: En la consigna no lo dice pero los cuadrantes que se imprimen son solo lo
 typedef struct 
 {
     int x, y;
-}coordenadas;
+} coordenadas;
 
 void ingresoDatos(coordenadas *pDatos);
 void validoDatos(coordenadas *puntDatos);
